@@ -11,8 +11,8 @@ public record ProductRequest(
     String imageUrl,
     Long categoryId
 ) {
-    public Product toEntity(Category category) {
-        return new Product(name, price, imageUrl, category);
+    public Product toEntity(Category category, String name, int quantity) {
+        return new Product(name, price, imageUrl, category, name, quantity);
     }
 
 }

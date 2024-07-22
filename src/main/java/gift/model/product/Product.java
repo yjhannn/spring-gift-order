@@ -50,12 +50,12 @@ public class Product {
     private List<Option> options = new ArrayList<>();
 
     public Product(){}
-    public Product(String name, int price, String imageUrl, Category category) {
+    public Product(String name, int price, String imageUrl, Category category, String optionName, int quantity) {
         this.name = name;
         this.price = price;
         this.imageUrl = imageUrl;
         this.category = category;
-        this.options.add(new Option("기본옵션", 1));
+        this.options.add(new Option(optionName, quantity));
         if(options.isEmpty())
             throw new OptionNotFoundException("상품에는 최소 하나 이상의 옵션이 있어야 합니다.");
     }

@@ -35,8 +35,7 @@ public class ProductService {
 
     public ProductResponse createProduct(ProductRequest productRequest, OptionRequest optionRequest) {
         Category category = categoryRepository.findById(productRequest.categoryId()).orElseThrow();
-        Product product = productRequest.toEntity(category);
-        product.addOption(optionRequest.name(), optionRequest.quantity());
+        Product product = productRequest.toEntity(category, optionRequest.name(), optionRequest.quantity());
         return ProductResponse.from(productRepository.save(product));
     }
 
