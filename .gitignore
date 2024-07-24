@@ -3,7 +3,6 @@ HELP.md
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
-!**/src/main/resources/application-private.properties
 !**/src/test/**/build/
 
 
@@ -20,6 +19,7 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
+application-private.properties
 .idea
 *.iws
 *.iml
