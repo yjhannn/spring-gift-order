@@ -1,6 +1,8 @@
 package gift.service;
 
 import gift.common.config.KakaoProperties;
+import gift.common.exception.CustomClientErrorException;
+import gift.common.exception.CustomServerErrorException;
 import gift.kakaologin.KakaoResponse;
 import gift.model.order.Order;
 import gift.model.order.OrderRequest;
@@ -40,10 +42,10 @@ public class KakaoService {
             .body(body)
             .retrieve()
             .onStatus(HttpStatusCode::is4xxClientError, (request, responses) -> {
-                throw new RuntimeException("4xx error");
+                throw new CustomClientErrorException("4XX 에러 발생");
         })
             .onStatus(HttpStatusCode::is5xxServerError, (request, responses) -> {
-                throw new RuntimeException("5xx error");
+                throw new CustomServerErrorException("5XX 에러 발생");
             })
             .toEntity(KakaoResponse.class);
         return response.getBody().getAccessToken();
