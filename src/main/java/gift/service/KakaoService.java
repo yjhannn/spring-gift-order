@@ -19,15 +19,10 @@ import org.springframework.web.client.RestClient;
 @Service
 public class KakaoService {
 
-//    @Value("${kakao.client-id}")
-//    private String restKey;
-//
-//    @Value("${kakao.redirect-url}")
-//    private  String redirectUrl;
-
     @Autowired
     private KakaoProperties kakaoProperties;
-    private final RestClient restClient = RestClient.builder().build();
+    @Autowired
+    private RestClient restClient;
 
     public String getKakaoUrl() {
         return "https://kauth.kakao.com/oauth/authorize" +
